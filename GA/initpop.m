@@ -1,3 +1,3 @@
 function pop=initpop(popsize,chromlength)
-%rand随机产生每个单元为{1,0}行数为popsize，列数为chromlength的矩阵，round进行圆整
+%rand闅忔満浜х敓姣忎釜鍗曞厓涓簕1,0}琛屾暟涓簆opsize锛屽垪鏁颁负chromlength鐨勭煩闃碉紝round杩涜鍦嗘暣
 pop = round(rand(popsize,chromlength));

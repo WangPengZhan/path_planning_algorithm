@@ -6,10 +6,10 @@ x=sin(2*pi*fo*m);
 y=x([1:M:length(x)]);
 subplot(2,1,1)
 stem(n,x(1:N));
-title('ÊäÈëĞòÁĞ');
-xlabel('Ê±¼ä/n');
-ylabel('·ù¶È');
+title('è¾“å…¥åºåˆ—');
+xlabel('æ—¶é—´/n');
+ylabel('å¹…åº¦');
 subplot(2,1,2)
 stem(n,y);
-title(['Êä³öĞòÁĞ,³éÈ¡Òò×ÓÎª',num2str(M)]);
-xlabel('Ê±¼ä/n'); ylabel('·ù¶È');
+title(['è¾“å‡ºåºåˆ—,æŠ½å–å› å­ä¸º',num2str(M)]);
+xlabel('æ—¶é—´/n'); ylabel('å¹…åº¦');

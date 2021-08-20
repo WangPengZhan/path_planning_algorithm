@@ -1,57 +1,57 @@
 clear all
 clc
 
-%%%%³õÊ¼»¯%%%%
-Ant = 300;       %ÂìÒÏÊıÁ¿
-Times = 100;     %ÒÆ¶¯´ÎÊı
-Rou = 0.9;       %ĞÅÏ¢ËØ»Ó·¢ÏµÊı
-P0 = 0.2;        %×ªÒÆ¸ÅÂÊ³£Êı
-Lower_1 = -1;    %ËÑË÷·¶Î§
+%%%%åˆå§‹åŒ–%%%%
+Ant = 300;       %èš‚èšæ•°é‡
+Times = 100;     %ç§»åŠ¨æ¬¡æ•°
+Rou = 0.9;       %ä¿¡æ¯ç´ æŒ¥å‘ç³»æ•°
+P0 = 0.2;        %è½¬ç§»æ¦‚ç‡å¸¸æ•°
+Lower_1 = -1;    %æœç´¢èŒƒå›´
 Upper_1 = 1;
 Lower_2 = -1;
 Upper_2 = 1;
 
-%%%%³õÊ¼»¯ÂìÒÏÎ»ÖÃ×ø±ê%%%%
+%%%%åˆå§‹åŒ–èš‚èšä½ç½®åæ ‡%%%%
 %%%% X(i,1),X(i,2) %%%%
 for i = 1:Ant
-    X(i,1) = (Lower_1 + (Upper_1 - Lower_1)*rand); %Ëæ»úÉèÖÃÂìÒÏµÄ³õÊ¼Î»ÖÃ
+    X(i,1) = (Lower_1 + (Upper_1 - Lower_1)*rand); %éšæœºè®¾ç½®èš‚èšçš„åˆå§‹ä½ç½®
     X(i,2) = (Lower_2 + (Upper_2 - Lower_2)*rand);
-    Tau(i) = F(X(i,1),X(i,2));  %ÊÊÓ¦¶È
+    Tau(i) = F(X(i,1),X(i,2));  %é€‚åº”åº¦
 end
 
-%%%%»æÍ¼%%%%
+%%%%ç»˜å›¾%%%%
 step = 0.05;
 f = '-(x.^4 + 3*y.^4 - 0.2*cos(3*pi*x) - 0.4*cos(4*pi*y) + 0.6)';
 [x,y] = meshgrid(Lower_1:step:Upper_1,Lower_2:step:Upper_2);
 z = eval(f);
 figure(1);
 subplot(1,2,1);
-mesh(x,y,z);                   %º¯ÊıÍ¼Ïñ
+mesh(x,y,z);                   %å‡½æ•°å›¾åƒ
 hold on;
-plot3(X(:,1),X(:,2),Tau,'k*')  %ÂìÒÏµã
+plot3(X(:,1),X(:,2),Tau,'k*')  %èš‚èšç‚¹
 hold on;
-text(0.1,0.8,-0.1,'ÂìÒÏµÄ³õÊ¼Î»·Ö²¼Î»ÖÃ');
+text(0.1,0.8,-0.1,'èš‚èšçš„åˆå§‹ä½åˆ†å¸ƒä½ç½®');
 xlabel('x');
 ylabel('y');
 zlabel('f(x,y)');
 
 for T = 1:Times
     lamda = 1/T;
-    [Tau_Best(T),BestIndex] = max(Tau); %Çó³öÊÊÓ¦¶È×î´óµÄÖµºÍË÷Òı
+    [Tau_Best(T),BestIndex] = max(Tau); %æ±‚å‡ºé€‚åº”åº¦æœ€å¤§çš„å€¼å’Œç´¢å¼•
     for i = 1:Ant
-        P(T,i) = (Tau(BestIndex) - Tau(i))/Tau(BestIndex); %×ªÒÆ¸ÅÂÊ
+        P(T,i) = (Tau(BestIndex) - Tau(i))/Tau(BestIndex); %è½¬ç§»æ¦‚ç‡
     end
     
     for i = 1:Ant
-        if P(T,i) < P0  %¾Ö²¿ËÑË÷
+        if P(T,i) < P0  %å±€éƒ¨æœç´¢
             temp1 = X(i,1) + (2*rand - 1)*lamda;
             temp2 = X(i,2) + (2*rand - 1)*lamda;
-        else            %È«¾ÖËÑË÷
+        else            %å…¨å±€æœç´¢
             temp1 = X(i,1) + (Upper_1 - Lower_1)*(rand - 0.5);
             temp2 = X(i,2) + (Upper_2 - Lower_1)*(rand - 0.5);
         end
         
-        %Ô½½ç´¦Àí
+        %è¶Šç•Œå¤„ç†
         if temp1 < Lower_1
             temp1 = Lower_1;
         end
@@ -65,7 +65,7 @@ for T = 1:Times
             temp2 = Upper_2;
         end
        
-        %Èç¹ûÊÊÓ¦¶ÈÓÅ¾ÍÒÆ¶¯
+        %å¦‚æœé€‚åº”åº¦ä¼˜å°±ç§»åŠ¨
         if F(temp1,temp2) > F(X(i,1),X(i,2))
             X(i,1) = temp1;
             X(i,2) = temp2;
@@ -73,7 +73,7 @@ for T = 1:Times
     end
     
     for i = 1:Ant
-        Tau(i) = (1-Rou)*Tau(i) + F(X(i,1),X(i,2)); %¸üĞÂĞÅÏ¢Á¿£¿£¿£¿
+        Tau(i) = (1-Rou)*Tau(i) + F(X(i,1),X(i,2)); %æ›´æ–°ä¿¡æ¯é‡ï¼Ÿï¼Ÿï¼Ÿ
     end
 end
 
@@ -84,7 +84,7 @@ x = X(:,1);
 y = X(:,2);
 plot3(x,y,eval(f),'k*');
 hold on;
-text(0.1, 0.8, -0.1, 'ÂìÒÏµÄ×îÖÕ·Ö²¼Î»ÖÃ');
+text(0.1, 0.8, -0.1, 'èš‚èšçš„æœ€ç»ˆåˆ†å¸ƒä½ç½®');
 xlabel('x');
 ylabel('y');
 zlabel('f(x,y)');
@@ -93,7 +93,7 @@ figure(2);
 plot(Tau_Best);
 xlabel('x');
 ylabel('y');
-title('¸÷´ú×îÓÅ½ø»¯Í¼');
+title('å„ä»£æœ€ä¼˜è¿›åŒ–å›¾');
 [max_value,max_index] = max(Tau);
 maxX = X(max_index,1);
 maxY = X(max_index,2);

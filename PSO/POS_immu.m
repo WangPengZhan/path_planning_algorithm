@@ -1,26 +1,26 @@
 function [x,y,Result] = POS_immu(func, N, c1, c2, w, MaxDT, D, eps, DS, replaceP,MinD, Psum)
-% c1Ñ§Ï°Òò×Ó
-% c2Ñ§Ï°Òò×Ó
-% w¹ßÐÔÈ¨ÖØ
-% MaxDT×î´óµü´ú´ÎÊý
-% DËÑËØ¿Õ¼äÎ¬Êý
-% N³õÊ¼»¯ÈºÌå¸öÊý
-% eps¾«¶È
-% DSÃ»Ñ­»·DS´Î¼ì²é¸öÌåÊÇ·ñ±äÓÅ
-% replacePÁ£×ÓµÄ¸ÅÂÊ´óÓÚreplaceP½«±»ÃâÒßÌæ»»
-% minDÁ£×Ó¼ä×îÐ¡¼ä¾à
-% Psum¸öÌå×î¼ÑºÍ
+% c1å­¦ä¹ å› å­
+% c2å­¦ä¹ å› å­
+% wæƒ¯æ€§æƒé‡
+% MaxDTæœ€å¤§è¿­ä»£æ¬¡æ•°
+% Dæœç´ ç©ºé—´ç»´æ•°
+% Nåˆå§‹åŒ–ç¾¤ä½“ä¸ªæ•°
+% epsç²¾åº¦
+% DSæ²¡å¾ªçŽ¯DSæ¬¡æ£€æŸ¥ä¸ªä½“æ˜¯å¦å˜ä¼˜
+% replacePç²’å­çš„æ¦‚çŽ‡å¤§äºŽreplacePå°†è¢«å…ç–«æ›¿æ¢
+% minDç²’å­é—´æœ€å°é—´è·
+% Psumä¸ªä½“æœ€ä½³å’Œ
 format long;
 
-%%%%³õÊ¼»¯ÖÖÈº¸öÌå%%%%
+%%%%åˆå§‹åŒ–ç§ç¾¤ä¸ªä½“%%%%
 for i = 1:N
     for j = 1:D
-        x(i,j) = -range + 2*range*rand; %Ëæ»ú³õÊ¼»¯Î»ÖÃ
-        v(i,j) = randn;                 %Ëæ»ú³õÊ¼»¯ËÙ¶È
+        x(i,j) = -range + 2*range*rand; %éšæœºåˆå§‹åŒ–ä½ç½®
+        v(i,j) = randn;                 %éšæœºåˆå§‹åŒ–é€Ÿåº¦
     end
 end
 
-%%%%¼ÆËãÁ£×ÓÊÊÓ¦¶È£¬²¢³õÊ¼»¯piºÍpg%%%%
+%%%%è®¡ç®—ç²’å­é€‚åº”åº¦ï¼Œå¹¶åˆå§‹åŒ–piå’Œpg%%%%
 for i = 1:N
     p(i) = feval(func, x(i,:) );
     y(i,:) = x(i,:);
@@ -34,7 +34,7 @@ for i = 2:N
     end
 end
 
-%%%%Ö÷Ñ­»·£¬°´¹«Ê½µü´úÖ±µ½Âú×ã¾«¶È»òÕß´ïµ½×î´ó´ÎÊý%%%%
+%%%%ä¸»å¾ªçŽ¯ï¼ŒæŒ‰å…¬å¼è¿­ä»£ç›´åˆ°æ»¡è¶³ç²¾åº¦æˆ–è€…è¾¾åˆ°æœ€å¤§æ¬¡æ•°%%%%
 for t = 1:MaxTD
     for i = 1:N
         v(i,:) = w*v(i,:) + c1*rand*(y(i,:)-x(i,:)) + c2*rand*(pg - x(i,:));
@@ -65,27 +65,27 @@ for t = 1:MaxTD
     end
     
     Pbest(t) = feval(func,pg);
-    if Foxhole(pg,D) < eps %Èç¹ûÂú×ã¾«¶È¾ÍÌø³öÑ­»·
+    if Foxhole(pg,D) < eps %å¦‚æžœæ»¡è¶³ç²¾åº¦å°±è·³å‡ºå¾ªçŽ¯
         break;
     end
-    %%%%¿ªÊ¼ÃâÒß%%%%
+    %%%%å¼€å§‹å…ç–«%%%%
     if t > DS
-        %Á¬ÐøDS´úÊý£¬ÖÖÈº×îÓÅÃ»ÓÐ±ä»¯¿ªÊ¼ÃâÒß
+        %è¿žç»­DSä»£æ•°ï¼Œç§ç¾¤æœ€ä¼˜æ²¡æœ‰å˜åŒ–å¼€å§‹å…ç–«
         if mod(t,DS) == 0 && (Pbest(t-DS+1) - PBest(t)) < 1e-020
-            %¸öÌå×îÓÅ²»ÍêÈ«ÏàµÈ£¬µ«Ð¡ÓÚÒ»¶¨·¶Î§¾ÍÈÏÎªÏàµÈ
-            for i = 1:N     %ÏÈ¼ÆËã¸öÌå×îÓÅºÍ
+            %ä¸ªä½“æœ€ä¼˜ä¸å®Œå…¨ç›¸ç­‰ï¼Œä½†å°äºŽä¸€å®šèŒƒå›´å°±è®¤ä¸ºç›¸ç­‰
+            for i = 1:N     %å…ˆè®¡ç®—ä¸ªä½“æœ€ä¼˜å’Œ
                 Psum = Psum + p(i);
             end
             
-            %%%%ÃâÒß³ÌÐò%%%%
+            %%%%å…ç–«ç¨‹åº%%%%
             for i = 1:N
                 
-                %¼ÆËãÃ¿¸ö¸öÌåÓë¸öÌåiµÄ¾àÀë
+                %è®¡ç®—æ¯ä¸ªä¸ªä½“ä¸Žä¸ªä½“içš„è·ç¦»
                 for j = i:N
                     distance(j) = abs(p(j) - p(i));
                 end
                 
-                %¼ÆËãÓë¸öÌåi¾àÀëÐ¡ÓÚminDµÄ¸öÊý
+                %è®¡ç®—ä¸Žä¸ªä½“iè·ç¦»å°äºŽminDçš„ä¸ªæ•°
                 num = 0;
                 for j = 1:N
                     if distance(j) < minD
@@ -93,11 +93,11 @@ for t = 1:MaxTD
                     end
                 end
                 
-                PF(i) = p(N-i+1)/Psum; %ÊÊÓ¦¶È¸ÅÂÊ
-                PD(i) = num/N;         %¸öÌåÅ¨¶È
+                PF(i) = p(N-i+1)/Psum; %é€‚åº”åº¦æ¦‚çŽ‡
+                PD(i) = num/N;         %ä¸ªä½“æµ“åº¦
                 
-                a = rand;              %Ìæ»»¸ÅÂÊÒò×Ó
-                PR(i) = a*PF(i) + (1-a)*PD(i) %Ìæ»»¸ÅÂÊ
+                a = rand;              %æ›¿æ¢æ¦‚çŽ‡å› å­
+                PR(i) = a*PF(i) + (1-a)*PD(i) %æ›¿æ¢æ¦‚çŽ‡
             end
             
             for i =1:N
@@ -110,20 +110,20 @@ for t = 1:MaxTD
     end
 end
 
-%%%%×îºó¼ÆËã½á¹û%%%%
+%%%%æœ€åŽè®¡ç®—ç»“æžœ%%%%
 x=pg(1,1);
 y=pg(1,2);
 Result = faval(func,pg);
-%%%%Ëã·¨½áÊø%%%%
+%%%%ç®—æ³•ç»“æŸ%%%%
 
-%%%%ÊÊÓ¦º¯Êý%%%%
+%%%%é€‚åº”å‡½æ•°%%%%
 function probabolity(N,i)
-PF = p(N-i)/Psum;     %ÊÊÓ¦¶È¸ÅÂÊ
+PF = p(N-i)/Psum;     %é€‚åº”åº¦æ¦‚çŽ‡
 disp(PF);
 for jj = 1:N
     if distance(ii) < minD
         num = num + 1;
     end
 end
-PD = num/N;           %¸öÌåÅ¨¶È
-PR = a*PF + (1-a)*PD; %Ìæ»»¸ÅÂÊ
+PD = num/N;           %ä¸ªä½“æµ“åº¦
+PR = a*PF + (1-a)*PD; %æ›¿æ¢æ¦‚çŽ‡

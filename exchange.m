@@ -1,5 +1,5 @@
 function [x,y] = exchange(x,y)
-%½»»»º¯Êı
+%äº¤æ¢å‡½æ•°
 temp = x;
 x = y;
 y = temp;

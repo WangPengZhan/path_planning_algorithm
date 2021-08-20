@@ -1,5 +1,5 @@
 function pop2=decodechrom(pop,spoint,length)
-% ½«¶ş½øÖÆ±àÂë×ª»¯³ÉÊ®½øÖÆ£¨¿ÉÒÔÉè¶¨ÆğÊ¼Î»ÖÃºÍ³¤¶È£©
+% å°†äºŒè¿›åˆ¶ç¼–ç è½¬åŒ–æˆåè¿›åˆ¶ï¼ˆå¯ä»¥è®¾å®šèµ·å§‹ä½ç½®å’Œé•¿åº¦ï¼‰
 pop1 = pop(:,spoint:spoint + length - 1);
 pop2 = decodebinary(pop1);
 end

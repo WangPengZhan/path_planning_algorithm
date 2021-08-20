@@ -1,6 +1,7 @@
 function plot_route(a,R)
-% »æÍ¼º¯Êý
-scatter(a(:,1),a(:,2),'rx');
+
+% ç»˜å›¾å‡½æ•°
+scatter(a(:, 1), a(:, 2), 'rx');
 hold on;
 plot( [a(R(1),1),a(R(length(R)),1)] ,[a(R(1),2),a(R(length(R)),2)]);
 hold on;

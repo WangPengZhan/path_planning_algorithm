@@ -1,23 +1,23 @@
 clear all
 clc
 
-popsize = 20;                             % ÈºÌå´óĞ¡
-chromlength = 10;                         % ×Ö·û´®³¤¶È
-pc = 0.8;                                 % ½»²æ¸ÅÂÊ
-pm = 0.005;                               % ±äÒì¸ÅÂÊ
-pop = initpop(popsize,chromlength);       % Ëæ»ú²úÉú³õÊ¼ÈºÌå
+popsize = 20;                             % ç¾¤ä½“å¤§å°
+chromlength = 10;                         % å­—ç¬¦ä¸²é•¿åº¦
+pc = 0.8;                                 % äº¤å‰æ¦‚ç‡
+pm = 0.005;                               % å˜å¼‚æ¦‚ç‡
+pop = initpop(popsize,chromlength);       % éšæœºäº§ç”Ÿåˆå§‹ç¾¤ä½“
 
-for i = 1:20                              % 20´Îµü´ú
-    [objvalue] = calobjvalue(pop);        % ¼ÆËãÄ¿±êº¯Êı
-    fitvalue = calfitvalue(pop);          % ¼ÆËãÃ¿¸ö¸öÌåµÄÊÊÓ¦¶È
-    [newpop] = selection(pop,fitvalue);   % ¸´ÖÆ
-    [newpop] = crossover(pop,fitvalue);   % ½»²æ
-    [newpop] = mutation(pop,pc);          % ±äÒì
-    [bestindividual,bestfit] = best(pop,fitvalue);  % Çó¸öÌåÖĞÊÊÓ¦¶È×î´óµÄÖµºÍ¸öÌå
-    y(i) = max(bestfit);                  % ¼ÇÂ¼×î´óÊÊÓ¦Öµ
-    n(i) = i;                             % ¼ÇÂ¼µü´ú´ÎÊı
-    pop5 = bestindividual;                % ¼ÇÂ¼ÊÊÓ¦¶È×î´óµÄ¸öÌå
-    x(i) = decodechrom(pop5,1,chromlength)*10/1023; % ½âÂë
+for i = 1:20                              % 20æ¬¡è¿­ä»£
+    [objvalue] = calobjvalue(pop);        % è®¡ç®—ç›®æ ‡å‡½æ•°
+    fitvalue = calfitvalue(pop);          % è®¡ç®—æ¯ä¸ªä¸ªä½“çš„é€‚åº”åº¦
+    [newpop] = selection(pop,fitvalue);   % å¤åˆ¶
+    [newpop] = crossover(pop,fitvalue);   % äº¤å‰
+    [newpop] = mutation(pop,pc);          % å˜å¼‚
+    [bestindividual,bestfit] = best(pop,fitvalue);  % æ±‚ä¸ªä½“ä¸­é€‚åº”åº¦æœ€å¤§çš„å€¼å’Œä¸ªä½“
+    y(i) = max(bestfit);                  % è®°å½•æœ€å¤§é€‚åº”å€¼
+    n(i) = i;                             % è®°å½•è¿­ä»£æ¬¡æ•°
+    pop5 = bestindividual;                % è®°å½•é€‚åº”åº¦æœ€å¤§çš„ä¸ªä½“
+    x(i) = decodechrom(pop5,1,chromlength)*10/1023; % è§£ç 
     pop = newpop;
 end
 

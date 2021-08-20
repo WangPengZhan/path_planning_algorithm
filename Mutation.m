@@ -1,5 +1,5 @@
 function a = Mutation(A)
-% ±äÒì
+% å˜å¼‚
 nnper = randperm(size(A,2));
 index1 = nnper(1);
 index2 = nnper(2);

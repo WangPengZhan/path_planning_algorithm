@@ -1,13 +1,13 @@
 function [newpop] = crossover(pop,pc)
-%½»²æ²Ù×÷
+%äº¤å‰æ“ä½œ
 [px,py] = size(pop);
 newpop = ones(size(pop));
 for i = 1:2:px-1
-    if (rand < pc)                  % Ğ¡ÓÚ½»²æ¸ÅÂÊ£¬½»»»ÏàÁÚÁ½Î»ÖÃµÄ²¿·ÖÆ¬¶Î
-        cpoint = round(rand*py);    % Ëæ»ú¾ö¶¨½»»»Æ¬¶ÎµÄÎ»ÖÃ
+    if (rand < pc)                  % å°äºäº¤å‰æ¦‚ç‡ï¼Œäº¤æ¢ç›¸é‚»ä¸¤ä½ç½®çš„éƒ¨åˆ†ç‰‡æ®µ
+        cpoint = round(rand*py);    % éšæœºå†³å®šäº¤æ¢ç‰‡æ®µçš„ä½ç½®
         newpop(i,:) = [pop(i,1:cpoint),pop(i+1,cpoint_1:py)];
         newpop(i+1,:) = [pop(i+1,1:cpoint),pop(i,cpoint+1:py)]
-    else                            % ²»½»»»£¬Ö±½Ó¸´ÖÆ
+    else                            % ä¸äº¤æ¢ï¼Œç›´æ¥å¤åˆ¶
         newpop(i,:) = pop(i);
         newpop(i+1,:) = pop(i+1);
     end

@@ -1,11 +1,11 @@
 function [bestindividual,bestfit] = best(pop,fitvalue)
-%ÇóÈ¡ÊÊÓ¦¶È×î´óµÄ¸öÌåºÍÊÊÓ¦Öµ
+%æ±‚å–é€‚åº”åº¦æœ€å¤§çš„ä¸ªä½“å’Œé€‚åº”å€¼
 [px,py] = size(pop);
 bestindividual = pop(1, :);
 bestfit = fitvalue(1);
 for i = 2:px
     if fitvalue(i) > bestfit
-        bestindividual = pop(i,:); %×îÊÊÓ¦µÄ¸öÌå
-        bestfit = fitvalue(i);     %×î´óµÄÊÊÓ¦Öµ
+        bestindividual = pop(i,:); %æœ€é€‚åº”çš„ä¸ªä½“
+        bestfit = fitvalue(i);     %æœ€å¤§çš„é€‚åº”å€¼
     end
 end

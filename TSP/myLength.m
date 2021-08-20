@@ -1,5 +1,5 @@
 function len = myLength(D,p)
-% 计算城市线路总距离的代码
+% 璁＄畻鍩庡競绾胯矾鎬昏窛绂荤殑浠ｇ爜
 [N,NN] = size(D);
 len = D(p(1,N),p(1,1));
 for i = 1:(N-1)

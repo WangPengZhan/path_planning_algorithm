@@ -1,5 +1,5 @@
 function [A,B] = cross(A,B)
-% ½»²æ²Ù×÷
+% äº¤å‰æ“ä½œ
 L = length(A);
 if L < 10
     W = L;

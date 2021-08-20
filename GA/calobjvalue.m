@@ -1,5 +1,5 @@
 function [objvalue]=calobjvalue(pop)
-% Ŀ�꺯��ֵ
+% 目标函数值
 [px,py] = size(pop);
 temp1 = decodechrom(pop,1,py);
 x = temp1*10/1023;

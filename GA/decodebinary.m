@@ -1,8 +1,8 @@
 function pop2=decodebinary(pop)
-% ¶þ½øÖÆ×ª»¯ÎªÊ®½øÖÆ£¨½âÂë£©
-[px,py] = size(pop);          % ÇópopÐÐÁÐÊý
+% äºŒè¿›åˆ¶è½¬åŒ–ä¸ºåè¿›åˆ¶ï¼ˆè§£ç ï¼‰
+[px,py] = size(pop);          % æ±‚popè¡Œåˆ—æ•°
 for i = 1:py
     pop1(:,i) = 2.^(py - i).*pop(:,i);
 end
-pop2 = sum(pop1, 2);          % Çópop1µÄÃ¿ÐÐÖ®ºÍ£¨Ê®½øÖÆÊý£©
+pop2 = sum(pop1, 2);          % æ±‚pop1çš„æ¯è¡Œä¹‹å’Œï¼ˆåè¿›åˆ¶æ•°ï¼‰
 end

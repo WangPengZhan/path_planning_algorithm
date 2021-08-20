@@ -1,18 +1,18 @@
 function [newpop] = selection(pop,fitvalue)
-% Ñ¡Ôñ¸´ÖÆ
-totalfit = sum(fitvalue);        % ÇóÊÊÓ¦ÖµÖ®ºÍ
-fitvalue = fitvalue/totalfit;    % µ¥¸ö¸öÌå±»Ñ¡ÖĞµÄ¸ÅÂÊ
-fitvalue = cumsum(fitvalue);     % ÇóÇ°nÏîºÍ×é³ÉµÄÊıÁĞ
+% é€‰æ‹©å¤åˆ¶
+totalfit = sum(fitvalue);        % æ±‚é€‚åº”å€¼ä¹‹å’Œ
+fitvalue = fitvalue/totalfit;    % å•ä¸ªä¸ªä½“è¢«é€‰ä¸­çš„æ¦‚ç‡
+fitvalue = cumsum(fitvalue);     % æ±‚å‰né¡¹å’Œç»„æˆçš„æ•°åˆ—
 [px,py] = size(pop);
-ms = sort( rand(px,1) );         % ´Ó´óµ½Ğ¡ÅÅÁĞ
+ms = sort( rand(px,1) );         % ä»å¤§åˆ°å°æ’åˆ—
 fitin=1;
 newin=1;
 
 while newin <= px                
-    if (ms(newin)) < fitvalue(fitin) % Èç¹ûÊÊÓ¦¶È´ó£¬Ôò±£Áô
+    if (ms(newin)) < fitvalue(fitin) % å¦‚æœé€‚åº”åº¦å¤§ï¼Œåˆ™ä¿ç•™
         newpop(newin) = pop(fitin);
         newin = newin + 1;
-    else                             % ·ñÔòÌÔÌ­
+    else                             % å¦åˆ™æ·˜æ±°
         fitin = fitin + 1;
     end
 end

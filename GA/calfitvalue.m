@@ -1,9 +1,9 @@
 function fitvalue = calfitvalue(objvalue)
-%¼ÆËã¸öÌåµÄÊÊÓ¦Öµ
+%è®¡ç®—ä¸ªä½“çš„é€‚åº”å€¼
 global Cmin;
 Cmin = 0;
 [px,py] = size(objvalue);
-%¸öÌåÊÊÓ¦ÖµÎª
+%ä¸ªä½“é€‚åº”å€¼ä¸º
 for i = 1:px
     if objvalue(i)+Cmin > 0
         temp = Cmin + objvalue(i);

@@ -1,10 +1,10 @@
 function [newpop] = mutation(pop,pm)
-% ±äÒì²Ù×÷
+% å˜å¼‚æ“ä½œ
 [px,py] = size(pop);
 newpop = ones(size(pop));
 for i = 1:px
-    if(rand < pm)    % ·¢Éú±äÒì£¨Ğ¡ÓÚ±äÒì¸ÅÂÊ£©£¬0±ä1,1±ä0
-        % Ëæ»úÈ·¶¨±äÒìÎ»ÖÃ
+    if(rand < pm)    % å‘ç”Ÿå˜å¼‚ï¼ˆå°äºå˜å¼‚æ¦‚ç‡ï¼‰ï¼Œ0å˜1,1å˜0
+        % éšæœºç¡®å®šå˜å¼‚ä½ç½®
         mpoint = round(rand*py);
         if mpoint <= 0
             mpoint = 1;
@@ -15,7 +15,7 @@ for i = 1:px
         else
             newpop(i, mpoint) = 0;
         end
-    else            % ²»±äÒì£¬Ö±½Ó¸´ÖÆ
+    else            % ä¸å˜å¼‚ï¼Œç›´æ¥å¤åˆ¶
         newpop(i) = pop(i);
     end
 end

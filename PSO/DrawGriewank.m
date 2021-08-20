@@ -1,5 +1,5 @@
 function DrawGriewank()
-%»æÖÆGriewankº¯ÊýÍ¼ÐÎ
+%ç»˜åˆ¶Griewankå‡½æ•°å›¾å½¢
 x = [-8:0.1:8]
 y = x
 [X,Y] = meshgrid(x,y);
